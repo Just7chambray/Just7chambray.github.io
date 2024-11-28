@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="栖迟於一丘，则天下不易其乐。"><meta charset="UTF-8"><title>在 Mac OS 中自定义自动切换的浅色/深色模式双壁纸 | 吴糖可乐</title>
+<link href="https://Just7chambray.github.io/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://Just7chambray.github.io/media/css/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://Just7chambray.github.io/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155298468-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+	gtag('config', 'UA-155298468-1');
+</script>
+<!--<script src='//unpkg.com/valine/dist/Valine.min.js'></script>-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="/media/scripts/Valine.min.js"></script>
+
+<link rel="canonical" href="https://Just7chambray.github.io/post/mac-wallpaper-autochanging/" />
+</head>
+
+<body>
+<div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
+<noscript><p class="warn" >本页面需要浏览器支持（启用）JavaScript</p></noscript><div class="header"><div class="logo_title"><div class="title animated fadeInDown"><a href="https://Just7chambray.github.io"><img alt="logo" style="display:inline-block;" src="https://Just7chambray.github.io/images/avatar.png"/></a><h1 title="吴糖可乐" class="weaklink"><a  href="/">吴糖可乐</a></h1>
+
+<div class="navbar weaklink">
+<div class="normal_nav">
+<div class="bitcron_nav_container"><div class="bitcron_nav"><div class="bitcron_nav"><div style="display:flex;justify-content:center;"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Just7chambray.github.io/post/gallery" class="selected active current nav__item" >图廊</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="selected active current nav__item" >Python</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="http://Just7chambray.github.io/post/about" class="selected active current nav__item" >关于</a></li></ul></nav>
+<div style="float:right;margin-top:1em"><form id="gridea-search-form" data-update="1578893743252" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="Search..."></form></div><div style="margin-left:0.5em;margin-top:1.2em"><input id="switch_default" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+<div class="clear clear_nav_inline_end"></div></div></div><div class="clear clear_nav_end"></div></div></div><div class="hamberger" href="javascript:void(0)" onclick="btn_toggle();"><i class="iconfont icon-category"></i></div></div></div></div>
+<div id="hn" class="no-js hidden_nav animated fadeInDown"><div class="bitcron_nav_container"><div class="bitcron_nav"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Just7chambray.github.io/post/gallery" class="selected active current nav__item" >图廊</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="selected active current nav__item" >Python</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="http://Just7chambray.github.io/post/about" class="selected active current nav__item" >关于</a></li></ul><div class="clear clear_nav_inline_end"></div></nav></div><div class="clear clear_nav_end"></div></div>
+<div style="display:flex;justify-content:center;inline-block;text-align:center;margin-top:7%"><div><form id="gridea-search-form" data-update="1732807119786" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q"  placeholder="Search..." /></form></div><div style="margin-left:0.5em"><input id="switch_default_h" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+</div></div>
+<script>function enableDarkmode(){document.body.classList.add("darkmode"),document.getElementById("switch_default").checked=1,document.getElementById("switch_default_h").checked=1}function removeDarkmode(){document.body.classList.remove("darkmode"),document.getElementById("switch_default").checked=0,document.getElementById("switch_default_h").checked=0}function getCookie(a){var b,c=new RegExp("(^| )"+a+"=([^;]*)(;|$)");return(b=document.cookie.match(c))?unescape(b[2]):null}cookie=getCookie("darkmode"),"enable"==cookie&&enableDarkmode(),window.matchMedia("(prefers-color-scheme: dark)").matches&&"disable"!==cookie&&(enableDarkmode(),document.cookie="darkmode=enable; path=/");var mobileBtn=function(){1==document.getElementById("switch_default").checked?(enableDarkmode(),document.cookie="darkmode=enable; path=/"):(removeDarkmode(),document.cookie="darkmode=disable; path=/")};</script>
+
+<div class="main"><div class="main-inner"><div class="content">
+<article class="post">
+<h2 class="post_title sm_margin"><a>在 Mac OS 中自定义自动切换的浅色/深色模式双壁纸</a></h2>
+<script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2021-07-28</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://Just7chambray.github.io/tag/WDEFvVHzy/" class="tag">Python</a> | 	<a href="https://Just7chambray.github.io/tag/vFqmDBjhB/" class="tag">科技</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">1139字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">5 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+</section>
+
+<img class="featureImg" alt="featureimg" src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/%E8%87%AA%E5%AE%9A%E4%B9%89%20%E8%87%AA%E5%8A%A8%E5%8C%96.png" referrerpolicy="no-referrer">
+
+<div style="display:flex">
+<div class="md_block" id="md_block">
+<div class="round-shape-one"></div>
+<h1 id="引子">引子</h1>
+<p>千呼万唤始出来的深色模式终于在iOS13现身，现如今的iOS和iPadOS都可以根据日出日落时间自动切换浅色模式和深色模式，针对墙纸提供了深色外观下调暗墙纸。尽管在Mac上Apple也提供根据时间变换的动态桌面与深浅色桌面，但无法对用户自定义的墙纸进行“深色外观下的调暗”，所以就想着自己写个py脚本定时执行浅色/深色模式双壁纸的自动切换。</p>
+<h1 id="思路">思路</h1>
+<p>其实整体思路比较简单：<br>
+1. 获取当前时间<br>
+2. 判断现在是白天还是晚上<br>
+3. 根据时间用系统命令设置相应壁纸<br>
+4. 每隔一段时间执行（定时执行）</p>
+<h1 id="具体实现">具体实现</h1>
+<p>主要用到datetime库和os库，下面是具体代码：</p>
+<ol>
+<li>获取当前时间</li>
+</ol>
+<pre><code class="language-python">import datetime
+import os
+# 获取当前时间
+now_time = datetime.datetime.now()
+print(now_time)  # 2021-07-28 11:18:16.454789
+</code></pre>
+<ol start="2">
+<li>设定时间范围<br>
+我这里设定的时间范围是从早上六点半开始到下午六点半，在这期间内算是白天；更准确一些可以根据经纬度确定日出日落时间，这里为了方便就直接把时间定死了。</li>
+</ol>
+<pre><code class="language-python"># 设定时间范围
+d_time = datetime.datetime.strptime(str(datetime.datetime.now().date())+'6:30', '%Y-%m-%d%H:%M')
+n_time =  datetime.datetime.strptime(str(datetime.datetime.now().date())+'18:30', '%Y-%m-%d%H:%M')
+</code></pre>
+<ol start="3">
+<li>判断现在是白天还是晚上，根据时间用系统命令设置相应壁纸<br>
+因为判断执行是连在一起的，就把这两步合起来讲。<br>
+设置壁纸的命令是<code>osascript -e 'tell application &quot;Finder&quot; to set desktop picture to POSIX file &quot;/Users/wu/Pictures/mine/day.png&quot;'</code>（file后面跟上壁纸文件的绝对路径），再用<code>os.system()</code>执行即可。</li>
+</ol>
+<pre><code class="language-python"># 判断当前时间是否在范围时间内
+if now_time &gt; d_time and now_time&lt;n_time:
+    # print('day')
+    cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/day.png\&quot;\'&quot; #注意要用转义符号
+    os.system(cmd)
+if now_time &gt; d_time1 or now_time&lt;d_time:
+	# print('night')
+	cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/night.png\&quot;\'&quot;
+	os.system(cmd)
+</code></pre>
+<p>完整代码如下：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+import datetime
+import os
+# 获取当前时间
+now_time = datetime.datetime.now()
+print(now_time)
+# 设定时间范围
+d_time = datetime.datetime.strptime(str(datetime.datetime.now().date())+'6:30', '%Y-%m-%d%H:%M')
+n_time =  datetime.datetime.strptime(str(datetime.datetime.now().date())+'18:30', '%Y-%m-%d%H:%M')
+# 判断当前时间是否在范围时间内
+if now_time &gt; d_time and now_time&lt;n_time:
+    # print('day')
+    cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/day.png\&quot;\'&quot; 
+    os.system(cmd)
+if now_time &gt; d_time1 or now_time&lt;d_time:
+	# print('night')
+	cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/night.png\&quot;\'&quot;
+	os.system(cmd)
+# print('done')
+</code></pre>
+<h1 id="测试">测试</h1>
+<p>打开terminal，进入到py文件所在文件夹，运行python3 wallpaper.py 或者./wallpaper.py<br>
+如下图成功运行<br>
+<img src="https://Just7chambray.github.io/post-images/1627460074151.jpg" alt="" loading="lazy"></p>
+<h1 id="创建定时任务">创建定时任务</h1>
+<p>既然代码可以成功运行，便用<code>crontab -e</code>来创建定时任务。</p>
+<p>打开terminal，输入<code>crontab -e</code>，进入到vim界面，在英文输入法下按下'a'键便可以编辑，输入<code>* *\2 * * * python3 /Users/wu/Desktop/wallpaper.py</code>，我这里是每隔两个小时自动执行，如果是每隔一分钟是<code>*/1 * * * *</code>这样设定。输入完成后按下<code>:</code>和'wq'，保存并退出。<br>
+这时会有如下图所示的弹窗，点击“好”即可。<br>
+<img src="https://Just7chambray.github.io/post-images/1627461462056.jpg" alt="" loading="lazy"><br>
+定时任务就设定完成了。</p>
+<h1 id="查看定时任务">查看定时任务</h1>
+<p>在terminal中输入<code>crontab -l</code>来查看定时任务。<br>
+<img src="https://Just7chambray.github.io/post-images/1627461607775.jpeg" alt="" loading="lazy"></p>
+<h1 id="but-crontab-不执行">BUT! crontab 不执行！</h1>
+<p>一天了，他都没什么反应，所以我又特地去谷歌了一下，发现好像是系统是 OSX 10.15 Catalina 以上的，对 cron 的权限进行了限制，因此需要在「系统偏好设置」里将 cron 添加到「完全磁盘访问权限」。<br>
+步骤：<br>
+系统偏好设置 -&gt; 安全性与隐私 -&gt; 选择 隐私 -&gt; 左侧菜单找到完全磁盘访问权限 -&gt; 在右侧查看是否有 cron 这个应用（没有的话就添加进去，然后勾选）</p>
+<p>cron 程序所在目录:</p>
+<ol>
+<li>终端输入 <code>whereis cron</code>，会显示<code>/usr/sbin/cron</code></li>
+<li>再输入 <code>open /usr/sbin</code></li>
+<li>在打开的文件夹内找到 cron</li>
+<li>把这个文件直接拖动到 系统偏好设置 右侧应用列表框内</li>
+</ol>
+<p><strong>在Mac上也可以自动切换的浅深色壁纸啦！👻</strong></p>
+<hr>
+<p>参考：</p>
+<ol>
+<li>https://www.jianshu.com/p/d22f78fe6530</li>
+<li>https://sspai.com/post/64255</li>
+<li>https://blog.csdn.net/xjh093/article/details/108517904</li>
+</ol>
+
+<span id="footnote"></span>
+<div id = "warn"></div>
+</div>
+<div class="toc-container"><ul class="markdownIt-TOC">
+<li><a href="#%E5%BC%95%E5%AD%90">引子</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95">测试</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1">创建定时任务</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1">查看定时任务</a></li>
+<li><a href="#but-crontab-%E4%B8%8D%E6%89%A7%E8%A1%8C">BUT! crontab 不执行！</a></li>
+</ul>
+</div>
+</div>
+<div id="fullPage"><canvas id="canvas"></canvas></div>
+</article>
+
+
+
+<div id="eof"><span>EOF</span></div><div class="round-shape-one"></div>
+
+
+<section>
+
+
+<div class="doc_comments">
+
+	  
+		<div id="gitalk-container"></div>
+		<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/qyxtim/Static@3.8/gitalk.min.js"></script><link href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.css"rel="stylesheet"><script>var gitalk=new Gitalk({clientID:"",clientSecret:"",repo:"",owner:"",admin:[""],id:(location.pathname).substring(0, 49),distractionFreeMode:false});gitalk.render("gitalk-container");</script> -->
+
+
+<!--评论显示区，请插入合适的位置-->
+<div id="comment"></div>
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.6.1/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<!-- <script>
+    new Valine({
+        el:'#comment',
+        appId: '??????????',
+        appKey: '?????????',
+        placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+        avatar:''
+    });
+</script> -->
+
+<script>
+    new Valine({
+        el: '#comment',
+	    lang: 'zh-cn',//设置评论语言
+  		app_id: '9jxs7DFUKyHw6619OPXUt30f-gzGzoHsz',
+  		app_key: '6MeNR50UG8AfLoDVoQtab6iT',
+  		placeholder: '评论留言'
+    })
+</script>
+	  
+		  
+	  
+
+</div>
+</section>
+</div></div></div><script>
+"use strict";!function(){for(var n=document.getElementsByTagName("pre"),e=n.length,s=0;s<e;s++){n[s].innerHTML='<span class="line-number"></span>'+n[s].innerHTML+'<span class="cl"></span>';for(var a=n[s].innerHTML.split(/\n/).length,r=0;r<a-1;r++){n[s].getElementsByTagName("span")[0].innerHTML+="<span>"+(r+1)+"</span>"}}}();
+let mainNavLinks=document.querySelectorAll(".markdownIt-TOC a");window.addEventListener("scroll",event=>{let fromTop=window.scrollY;mainNavLinks.forEach((link,index)=>{let section=document.getElementById(decodeURI(link.hash).substring(1));let nextSection=null
+if(mainNavLinks[index+1]){nextSection=document.getElementById(decodeURI(mainNavLinks[index+1].hash).substring(1));}
+if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop){link.classList.add("currentToc");}else{link.classList.remove("currentToc");}}else{link.classList.add("currentToc");}}else{link.classList.remove("currentToc");}});});
+var list=document.querySelectorAll(".katex");for(var i=0;i<list.length;i++){list[i].style.display="unset"};
+var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
+var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
+content="本文最后更新于2021-07-28，已超过 1 年没有更新，涉及的内容可能已经失效！";var date1="2021-07-28 10:56:32";date1=date1.replace("-","/");var date2=new Date();var date3=date2.getTime()-new Date(date1).getTime();var days=Math.floor(date3/(24*3600*1000));if(days>=365){document.getElementById("warn").innerHTML=content};
+</script>
+<style>#magnifyImg{position:fixed;left:0;top:0;text-align:center;width:100%;display:none;z-index:9999}#magnifyImg img{object-fit:contain;background:#eaecef;padding:15px;border-radius:10px;height:auto;width:auto;vertical-align:middle}</style>
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"><a href="https://github.com/Just7chambray"title="github"><i class="iconfont icon-github"></i></a><a href="mailto:just7chambray@gmail.com"title="envelope"><i class="iconfont icon-envelope"></i></a><a href="https://just7chambray.github.io/atom.xml"title="rss"><i class="iconfont icon-rss"></i></a></div></div><div class="copyright"id="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Copyright © 2018-2020 <a href="https://Just7chambray.github.io" style="margin:0;">吴糖可乐</a>.</div>
+<span style="display: inline;margin-right:15px;">👁<strong><span id="busuanzi_value_site_uv"></span></strong></span><span id="busuanzi_container_page_pv" style="display: inline;"><span>📚<strong>79</strong> posts</span></div></div>
+<script>
+console.log("\n %c \u26a1Theme: Bitcron-pro Author's Blog:https://blog.blinkstar.cn  Writen By Serence  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;", );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js" type="module" defer></script>
+<script type="text/javascript" async src="https://Just7chambray.github.io/media/js/prism.js"></script>
+
+
+
+	<!-- <script>
+	    comment_el = '#comment';
+	    comment_count_el = 'span.comment-count';
+	    new Valine({
+	        el: comment_el,				// 评论区元素（要求div）
+	        count_el: comment_count_el,    // 评论计数元素（要求span）
+	        lang: 'zh-cn',							   // 语言（zh-cn或en）
+	        // emoticon_url: 'https://cloud.panjunwen.com/alu', // 表情包根目录（自行解决文件托管）
+	        // emoticon_list: ["吐.png", "狂汗.png", "不说话.png"], // 表情包文件列表
+	        app_id: '9jxs7DFUKyHw6619OPXUt30f-gzGzoHsz',			    										   	
+	        app_key: '6MeNR50UG8AfLoDVoQtab6iT',    										      
+	        placeholder: 'Write a comment',  // 提示符
+	        admin_email_hash: 'f32fc1c3f6674bfb5621a60901b5f96c', // 可选，管理员邮箱md5，用于显示管理员标志👮‍
+	        max_nest: 3,					// 嵌套评论深度，太大会影响加载速度
+	        page_size: 5					// 分页大小
+	    });
+	</script> -->
+
+</body>
+
+
+ 
+</html>
