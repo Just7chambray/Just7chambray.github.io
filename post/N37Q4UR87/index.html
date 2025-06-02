@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>毕业记（一） | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">毕业记（一）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-06-25</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/ACt_rk1gs/">
+                    毕业
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Just7chambray.github.io/tag/BPnhyZ4d6/">
+                    随笔
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>凌晨一点，我睡不着，准确的来说，是我不想睡</p>
+<p>毕业的脚步越来越近，看着朋友圈刷屏的毕业照与有感而发，我似乎也感慨万千，可真的要我说出些什么，话到嘴边却又全然消失</p>
+<p>大学四年的记忆，似乎随着年龄的增大与熬夜天数的增加，慢慢变得模糊，残存的是某一瞬间的真切感受和此时对过去的感慨</p>
+<p>离别是毕业的子集。<br>
+作为一个不会离别的人，面对一群可能这辈子都不会再见的同学，面对一生只剩下几次见面机会的朋友与老师，我不知道该说些什么做些什么，最简单粗暴的方法就是不去想它。可当日历上的圆圈一天天后移，越来越多的同学在朋友圈告别时，不知所措的感觉迈着更快的步伐向我走来……</p>
+<p>不同于高中毕业，那是一群就算各奔东西而家乡的根都在一块的人，即使我们专业不同，未来道路选择不同，可我们终有家乡将散落在天南海北的我们联结在一起</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/summer_night/">
+              <h3 class="post-title">
+                下一篇：北纬二十几度的夏夜
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>实训日记0907-0908 | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/20200907-08%E5%AE%9E%E8%AE%AD%E6%97%A5%E8%AE%B0.png')">
+            </div>
+          
+          <h2 class="post-title">实训日记0907-0908</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-09-08</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/BPnhyZ4d6/">
+                    随笔
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Just7chambray.github.io/tag/WuIcMhG1C/">
+                    生活
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>记录我的实训头两天</p>
+<!-- more -->
+<p>第一天和第二天学习的内容都相对简单一些，主要是一些网络基础知识的回顾，静态路由和动态路由的学习实践。</p>
+<h2 id="静态路由static-route">静态路由(Static Route)</h2>
+<h3 id="概念">概念</h3>
+<p>由网络管理人员手工添加到路由表上的路由</p>
+<h3 id="基本思想">基本思想</h3>
+<p>如果想要路由器知道某个网络，就手工输入这些路径。</p>
+<h3 id="适用范围">适用范围</h3>
+<p>一般用于网络规模不大、拓扑结构固定的网络中。</p>
+<h3 id="特点">特点</h3>
+<ul>
+<li>简单、高效、可靠</li>
+<li>优先级最高，当动态路由与静态路由发生冲突时，以静态路由为准</li>
+</ul>
+<h3 id="配置">配置</h3>
+<pre><code>#######先完成接口的基础配置###########
+RouterX# configure terminal
+RouterX(config)# interface 接口名
+RouterX(config)# ip address IP地址 子网掩码
+#######配置静态路由###########
+RouterX(config)# ip route 目标网段 子网掩码 下一跳IP地址/本地路由器的出站接口 可选项参数
+</code></pre>
+<h2 id="默认路由default-route">默认路由(Default Route)</h2>
+<h3 id="概念-2">概念</h3>
+<p>对IP数据包中的目的地址找不到存在的其他路由时，路由器所选择的路由</p>
+<h3 id="配置-2">配置</h3>
+<pre><code>######路由器禁用路由功能时设置默认路由#####
+RouterX(config)# ip default-gateway IP地址
+######路由器启用路由功能时设置默认路由#####
+RouterX(config)# ip default-network 网段
+######创建到0.0.0.0 0.0.0.0的默认路由#####
+RouterX(config)# ip route0.0.0.0 0.0.0.0
+</code></pre>
+<h2 id="动态路由dynamic-route">动态路由(Dynamic Route)</h2>
+<h3 id="概念-3">概念</h3>
+<p>使用网络路由协议自动调整拓扑或流量变化的路由</p>
+<h3 id="适用范围-2">适用范围</h3>
+<p>适用于网络规模大、网络拓扑复杂的结构网络中。</p>
+<h3 id="特点-2">特点</h3>
+<ul>
+<li>实时的适应网络结构的变化</li>
+<li>通常作为静态路由的补充</li>
+</ul>
+<h3 id="动态路由协议">动态路由协议</h3>
+<h4 id="概念-4">概念</h4>
+<p>在路由器之间使用路由协议来确定远程网络的路径，并在路由表中维护这些网络；确定路径后，路由器可以通过路由协议学习网络条目</p>
+<h4 id="协议">协议</h4>
+<ul>
+<li>OSPF</li>
+<li>RIP</li>
+<li>EIGRP</li>
+<li>BGP</li>
+<li>···</li>
+</ul>
+<h4 id="配置eigrp">配置EIGRP</h4>
+<pre><code>RouterX(config)#router eigrp 自治系统编号
+RouterX(config-router)#network 直连网段 子网掩码的反码
+RouterX(config)#no auto-summary
+
+########信息查看#######
+RouterX# show ip eigrp interface  显示EIGRP协议的接口
+RouterX# show ip eigrp traffic  检测hello、update这些报文收发情况
+RouterX# show ip eigrp neighbor  检测邻居
+RouterX# show ip eigrp topology  检测拓扑表的条目
+RouterX# show ip route eigrp
+RouterX# traceroute IP地址  检测经过的路径
+</code></pre>
+<h4 id="qa-eigrp邻居起不来">Q&amp;A: EIGRP邻居起不来？</h4>
+<ol>
+<li>看路由器能否通信</li>
+<li>AS是否一致</li>
+<li>K值（权重）是否一致</li>
+<li>认证PASSWORD</li>
+<li>DUAL算法的Query包（用于查询路由信息）发送超过15次</li>
+</ol>
+<h4 id="配置rip">配置RIP</h4>
+<pre><code>RouterX(config)#router rip
+RouterX(config-router)#version 2
+RouterX(config-router)#no auto-summary
+RouterX(config-router)#network 直连网段
+
+########信息查看#######
+RouterX# show ip route
+RouterX# show ip route rip
+RouterX# show ip protocol
+RouterX# show ip rip database
+RouterX# show running-confiig
+RouterX# clear ip route *  刷新路由表
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/os_review/">
+              <h3 class="post-title">
+                下一篇：操作系统复习
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

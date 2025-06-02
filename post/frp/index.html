@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>使用frp进行内网穿透 实现公网访问工位主机 | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/frp.png')">
+            </div>
+          
+          <h2 class="post-title">使用frp进行内网穿透 实现公网访问工位主机</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-03-05</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/vFqmDBjhB/">
+                    科技
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Just7chambray.github.io/tag/TILESCRKuS/">
+                    效率
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>想着给实验室的主机搞个内网穿透，这样就可以公网访问我的主机了，虽然至今还没用它来工作过，还有之前闲来无事买的服务器，反正除了作业和科研都不想干，不如折腾折腾！😁</p>
+<p>我的配置：</p>
+<ol>
+<li>
+<p>腾讯云服务器（CPU: 2核，内存: 4GB，80GB SSD云硬盘，带宽：8Mbps，系统：ubuntu18.04）</p>
+</li>
+<li>
+<p>Windows 10 （11th Gen Intel(R) Core(TM) i7-11700 2.5GHz 内存：16GB 无显卡）</p>
+</li>
+</ol>
+<h1 id="step1-下载frp的服务器软件和客户端软件"><strong>Step1: 下载frp的服务器软件和客户端软件</strong></h1>
+<p><a href="https://github.com/fatedier/frp/releases">frp下载地址指路🧭</a></p>
+<figure data-type="image" tabindex="1"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/1646448391481.png" alt="下载参考" loading="lazy"></figure>
+<ol>
+<li>在服务器下载frp的服务器软件</li>
+</ol>
+<pre><code class="language-shell">wget https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_386.tar.gz
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/1646448643267.png" alt="" loading="lazy"></figure>
+<p>PS：这里要注意linux的体系结构，可以通过<code>uname -a</code>命令来查看Linux的结构（下载参考那张图中的386表示x86）。可别跟我一样，明明是x86系统，却下了arm的包🥲，结果都到了启动frp服务时报错才发现，顺便提一下报的是这样的错：<code>-bash: ./frps: cannot execute binary file: Exec format error</code></p>
+<ol start="2">
+<li>在win10上下载frp客户端软件</li>
+</ol>
+<h1 id="step2-在服务器端安装frp"><strong>Step2: 在服务器端安装frp</strong></h1>
+<h2 id="解压压缩包">解压压缩包</h2>
+<pre><code class="language-shell">tar -zxvf frp_0.39.1_linux_386.tar.gz
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/Snipaste_2022-03-05_11-02-47.png" alt="Snipaste_2022-03-05_11-02-47" loading="lazy"></figure>
+<p>通过<code>cd</code> +文件夹名 进入到该文件夹内（这里是<code>cd frp_0.39.1_linux_386/</code>）</p>
+<p>还可以通过<code>ls -a</code>的命令查看目录</p>
+<figure data-type="image" tabindex="4"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/Snipaste_2022-03-05_11-08-01.png" alt="Snipaste_2022-03-05_11-08-01" loading="lazy"></figure>
+<h2 id="修改frpsini文件">修改<code>frps.ini</code>文件</h2>
+<p>通过<code>vim frps.ini</code> 命令修改该文件，一开始是如下图这样：</p>
+<figure data-type="image" tabindex="5"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305111056435.png" alt="image-20220305111056435" loading="lazy"></figure>
+<p>可修改如下：</p>
+<pre><code class="language-shell">[common]
+bind_port = 7000 #frp服务的端口号， 可自行修改，默认7000
+dashboard_port = 7500 # frp的web界面的端口号，可自行修改，默认7500
+token = 12345678 #  frp客户端连接时的密码，可自行修改，默认为12345678
+dashboard_user = admin #  web界面的登录账户，可自行修改，默认为admin
+dashboard_pwd = admin # web界面的登录密码，可自行修改，默认为admin
+</code></pre>
+<p>PS：实际修改不要有中文和后面的注释，否则极大可能启动失败。</p>
+<h2 id="服务器端启动frp服务">服务器端启动frp服务</h2>
+<p>记得先开启端口！</p>
+<figure data-type="image" tabindex="6"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305111858389.png" alt="image-20220305111858389" loading="lazy"></figure>
+<p>然后再启动！</p>
+<pre><code class="language-shell">./frps -c ./frps.ini
+</code></pre>
+<figure data-type="image" tabindex="7"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305111749074.png" alt="image-20220305111749074" loading="lazy"></figure>
+<p>在浏览器测试一下是否成功<code>ip:7500</code></p>
+<figure data-type="image" tabindex="8"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305112126115.png" alt="image-20220305112126115" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305112415019.png" alt="image-20220305112415019" loading="lazy"></figure>
+<h3 id=""></h3>
+<blockquote>
+<p>后台启动！！</p>
+<p>为了防止关闭连接窗口时服务停止，所以使用<code>nohup</code>可以一直启动服务器的frp服务端的任务。</p>
+<p><code>nohup ./frps -c frps.ini &amp;</code></p>
+</blockquote>
+<h1 id="step3-在windows安装frp客户端">Step3: 在Windows安装frp客户端</h1>
+<h2 id="解压frp_0391_windows_386zip">解压<code>frp_0.39.1_windows_386.zip</code></h2>
+<figure data-type="image" tabindex="10"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/1646449019214.png" alt="" loading="lazy"></figure>
+<h2 id="修改frpcini文件">修改<code>frpc.ini</code>文件</h2>
+<p>打开文件如下：</p>
+<figure data-type="image" tabindex="11"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/DF86F104E8ADD4453CB7B871E46C7B15.jpg" alt="DF86F104E8ADD4453CB7B871E46C7B15" loading="lazy"></figure>
+<p>可修改如下：</p>
+<pre><code class="language-shell">[common]
+server_addr = **.**.**.** # 服务器ip，自行修改
+server_port = 7000 # 刚刚配置的frp服务端口
+token = 12345678 #刚刚配置的frp连接密码 
+tls_enable = true # 没有这行客户端启动可能会报错login to server failed: EOF
+
+[ssh] # 其实这个ssh是Ubuntu或者其他版本的linux系统使用的。
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 20022 # 用SSH客户端访问 [云服务器ip]:20022，就可以经过反向代理直接访问到[本地服务器ip]:22
+
+[rdp] # 为了远程桌面连接
+type = tcp
+local_ip = 127.0.0.1
+local_port = 3389 # 打开win设置，找到远程桌面发现，点击高级设置可以看到端口号
+remote_port = 33389  # 远程桌面控制访问 [云服务器ip]:33389，就可以经过反向代理直接访问到[本地服务器ip]:3389
+</code></pre>
+<p>PS：<code>tls_enable = true </code></p>
+<p>如果没有这行客户端启动可能会报错login to server failed: EOF</p>
+<figure data-type="image" tabindex="12"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/F48EADE8EE2C0D35B55C328DD64BFFC4.jpg" alt="F48EADE8EE2C0D35B55C328DD64BFFC4" loading="lazy"></figure>
+<p>配置完成frpc.ini后，就可以运行frpc了！</p>
+<blockquote>
+<p>frpc程序不能直接双击运行！！！</p>
+</blockquote>
+<p>打开cmd，可以选择进到frp所在目录下，输入<code>frpc.exe -c frpc.ini</code>启动</p>
+<figure data-type="image" tabindex="13"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/45A65781DD8466E38CD31CE8601131A8.jpg" alt="45A65781DD8466E38CD31CE8601131A8" loading="lazy"></figure>
+<h1 id="step4尝一下远程控制">Step4：尝一下远程控制</h1>
+<p>使用Microsoft Remote Desktop连接win10，却发现客户端抛出异常：</p>
+<pre><code class="language-shell"> [E] [proxy.go:793] [7891b2d82382556d] [rdp] connect to local service [127.0.0.1:3389] error: dial tcp 127.0.0.1:3389: connectex: No connection could be made because the target machine actively refused it.
+</code></pre>
+<figure data-type="image" tabindex="14"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/B959DAFF0FE405A675F370DC2E5BD15F.jpg" alt="B959DAFF0FE405A675F370DC2E5BD15F" loading="lazy"></figure>
+<p>一番搜索之后发现说是win10电脑的远程连接功能被阉割了，所以需要下载<a href="https://github.com/stascorp/rdpwrap/releases">修复工具</a>。</p>
+<ol>
+<li>
+<p>以管理员身份运行<code>install.bat</code></p>
+<figure data-type="image" tabindex="15"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/968A583DDF290E230C25EAA7C435B993.jpg" alt="968A583DDF290E230C25EAA7C435B993" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/6F323380FABE64A9E4296F27508E6D93.jpg" alt="6F323380FABE64A9E4296F27508E6D93" loading="lazy"></figure>
+</li>
+<li>
+<p>双击运行RDPConf.exe，如下图所示就是ok的，现在就可以啦！</p>
+<figure data-type="image" tabindex="17"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/DAAC9607A1904C590BBC17EAFCBDF82D.jpg" alt="DAAC9607A1904C590BBC17EAFCBDF82D" loading="lazy"></figure>
+</li>
+</ol>
+<p>最后试了一下，好像成功了又好像不成功——</p>
+<p>成功的是能连，不成功的是他黑屏，但是又能跳出任务管理器，桌面explorer.exe杀过了也没用，所以就是不成功。</p>
+<figure data-type="image" tabindex="18"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305145715091.png" alt="image-20220305145715091" loading="lazy"></figure>
+<p>在我的不懈努力之下最终，真的是最终，找到了可行的解决办法！</p>
+<ol>
+<li>
+<p>按Win+R，输入gpedit.msc打开策略组编辑器</p>
+<figure data-type="image" tabindex="19"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/43B4DB68E20D3B0B2B8413D493ACEEB0.jpg" alt="43B4DB68E20D3B0B2B8413D493ACEEB0" loading="lazy"></figure>
+</li>
+<li>
+<p>定位到“计算机配置/管理模板/Windows组件/远程桌面服务/远程桌面会话主机/远程会话环境”</p>
+</li>
+<li>
+<p>选择右侧的“为远程桌面链接使用WDDM图形显示驱动”，设置为禁用。</p>
+<figure data-type="image" tabindex="20"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/5BAD0C8F1234EB43F08E504567F09E2E.jpg" alt="5BAD0C8F1234EB43F08E504567F09E2E" loading="lazy"></figure>
+</li>
+<li>
+<p>重启计算机即可正常使用远程桌面链接。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="21"><img src="https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/image-20220305151135312.png" alt="image-20220305151135312" loading="lazy"></figure>
+<h1 id="小结">小结</h1>
+<p>折腾的过程充满艰辛，一步一步都是坑！尽管心情起起落落落，但最后好在实现了当初的设想，也给使用frp进行内网穿透的小伙伴看个热闹。</p>
+<h1 id="20220424更">20220424更</h1>
+<p>其实之前有一次因为什么原因我忘了，好像是服务器被一个进程锁死一直没法登录，再加上一直没有使用这个功能，后面想着就算了。<br>
+今天又重新搞了一下，因为一个朋友在体验垒球活动时受伤了，所以需要帮她腾讯会议上号，又折腾了一下。主要是增加了windows开机自启frp。</p>
+<p>其实也很简单，但是不知道当时为啥没整这个。</p>
+<ol>
+<li>在Windows中frp的文件夹下新建一个bat文件，我这里命名为<code>start_frp.bat</code>。<br>
+编辑内容为<pre><code class="language-shell"> @echo off
+ :home
+ frpc.exe -c frpc.ini
+ goto home
+</code></pre>
+保存即可。</li>
+<li>打开开始菜单，搜索“任务计划程序”
+<ol>
+<li>在“常规”页中
+<ol>
+<li>点击右侧的 “创建任务”</li>
+<li>“名称”这里我写的是<code>start_frp</code></li>
+<li>“位置”不用管</li>
+<li>“安全选项”我选的是“不管用户是否登录都要运行”，这样子只要有网的情况下就可以开启frp且实现远程控制</li>
+<li>“使用最高权限运行”可选可不选</li>
+<li>勾选上左下角的“隐藏”，即隐藏命令提示符的窗口</li>
+</ol>
+</li>
+<li>在“触发器”页中
+<ol>
+<li>点击左下角的“新建”</li>
+<li>在新弹出的“新建触发器”中，“开始任务”选择为“启动时”</li>
+<li>点击右下角的“确定”</li>
+</ol>
+</li>
+<li>再转到“操作”页中
+<ol>
+<li>点击左下角的“新建”</li>
+<li>在新弹出的“新建操作”中
+<ol>
+<li>选择“操作”为“启动程序”</li>
+<li>“程序或脚本”选择frp路径下的bat文件</li>
+<li>“起始于（可选）”是bat文件的文件夹路径</li>
+<li>点击右下角的“确定”</li>
+</ol>
+</li>
+<li>点击右下角的“确定”</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>重启电脑，用远程控制应用连接即可！</li>
+</ol>
+<p>参考：</p>
+<p>[1] https://blog.csdn.net/weixin_42081389/article/details/111745516</p>
+<p>[2] https://sspai.com/post/52523</p>
+<p>[3] https://zhuanlan.zhihu.com/p/126194647</p>
+<p>[4] https://zhuanlan.zhihu.com/p/88400552</p>
+<p>[5] https://blog.csdn.net/gdali/article/details/108864769</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/letter2myself/">
+              <h3 class="post-title">
+                下一篇：写一封信寄给半年后的自己
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

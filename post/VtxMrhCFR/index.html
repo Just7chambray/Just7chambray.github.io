@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>解决 开代理后Overleaf文档编辑无法打开 | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">解决 开代理后Overleaf文档编辑无法打开</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-08-19</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/vFqmDBjhB/">
+                    科技
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>其实这个问题困扰我很久了，但一直苦于没有合适的关键词搜索问题来解决</p>
+<p>今早问了师兄，猜测可能是代理的分流问题<br>
+想着要不学者试试编辑分流规则，但简单搜了一下有点看不进去，头大<br>
+然后再搜搜 clashx &quot;overleaf&quot; 不走代理<br>
+竟然找到了和我同病相怜的小伙伴（这里附上链接<a href="https://github.com/yichengchen/clashX/discussions/899">🔗</a>）</p>
+<p>而且看到网友说</p>
+<blockquote>
+<p>如果使用safari:<br>
+不管clashx是处在global/rule/direct中哪个状态，都打不开（卡在loading一半的地方; &quot;Unable to connect, please view the connection problems guide to fix the issue.&quot;）；<br>
+除非关闭 &quot;设置为系统代理&quot;，就可以打开。<br>
+如果使用chrome: 以上各种情况下都可以正常打开。</p>
+</blockquote>
+<p>然后我去试了一次，真的如此。</p>
+<p>紧接着根据另一位网友的操作完美解决了困扰已久的这个问题。</p>
+<blockquote>
+<p>edit ~/.config/clash/proxyIgnoreList.plist (if not exist, create it)<br>
+add rules</p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;array&gt;
+	&lt;string&gt;192.168.0.0/16&lt;/string&gt;
+	&lt;string&gt;10.0.0.0/8&lt;/string&gt;
+	&lt;string&gt;172.16.0.0/12&lt;/string&gt;
+	&lt;string&gt;127.0.0.1&lt;/string&gt;
+	&lt;string&gt;localhost&lt;/string&gt;
+	&lt;string&gt;*.local&lt;/string&gt;
+	&lt;string&gt;*.crashlytics.com&lt;/string&gt;
+	&lt;!-- DO NOT DELETE THE ABOVE --&gt;
+        &lt;string&gt;*.overleaf.com&lt;/string&gt;
+&lt;/array&gt;
+&lt;/plist&gt;```</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/qingmaban/">
+              <h3 class="post-title">
+                下一篇：青马班的奇幻之旅
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

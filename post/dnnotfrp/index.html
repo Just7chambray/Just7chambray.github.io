@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>没事别搞内网穿透！ | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://picgo4gridea.oss-cn-shanghai.aliyuncs.com/images/donotfrp.png')">
+            </div>
+          
+          <h2 class="post-title">没事别搞内网穿透！</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-05-07</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/BPnhyZ4d6/">
+                    随笔
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>大家好，我中了勒索病毒！</p>
+<!-- more -->
+<p>事实告诉我们，有事没事都别自己搞内网穿透，真的要用去找花生壳，毕竟人家将这服务商业化了。<br>
+可能花生壳也有风险，最安全的做法还是别做了。</p>
+<hr>
+<h1 id="搞内网穿透的初衷">搞内网穿透的初衷</h1>
+<p>其实一开始搞内网穿透就是想随时随地能连接到工位的主机，但是一开始没啥太大用处。一段时间之后不知道什么原因反正就连不上了，想着反正也没怎么用到就不修复了。</p>
+<p>随后，因为朋友的韧带断裂，再加上我们因为疫情一直在上网课，所以我就帮这个朋友在会议上挂着，所以想着工位主机不是就可以派上用场了吗，然后一通修复，搞定！</p>
+<h1 id="连不上了">连不上了</h1>
+<p>好像是这个月5号的时候，那个朋友还是需要我帮她挂一下，但是发现连接不上了，我一开始也没太在意，以为是跟之前一样的情况，到时候修复一下就行。</p>
+<h1 id="准备修复却发现是中了勒索病毒">准备修复，却发现是中了勒索病毒</h1>
+<p>7号下午，我想着要不看看是啥问题远程连接不上，然后打开了工位的主机，发现一直在bios界面，就很奇怪。<br>
+一番谷歌之后还是没能解决，变向师兄寻求帮助。</p>
+<p>师兄一开始也是在bios的设置界面琢磨了很久，发现还是不太行。在另一师兄的操作下进到了命令行界面，并进到磁盘路径里面，看到了磁盘里的文件，其中有些文件的后缀是mkp，这个后缀前还有一个邮箱。接着又是一通搜索，发现是中了勒索病毒，而且大家的帖子都比较新，感觉最近非常猖狂。</p>
+<p>师兄发现后甚至比我还愤恨，说要发封邮件去骂他；而我已经人麻了。</p>
+<h1 id="绝不向恶之力低头">绝不向恶之力低头</h1>
+<p>一番操作后，我们读到了他留下的readme文件，写了非常详细的FAQ。<br>
+还好平时不怎么用这台电脑，但我总记得之前把什么大文件备份到这台电脑上了，但是现在也想不起来，就直接重装了。</p>
+<h1 id="当事人很后悔">当事人很后悔</h1>
+<p>没等重装完，就到了上课的时间，我有怀着沉重的心情去上课。<br>
+期间我跟我的几个懂行的朋友聊这个事情，发现大部分勒索病毒都是通过远程桌面渗入的，而且我的用户名口令实在太常见也太弱了，人家暴力破解一下就解开了。听完这些当事人表示真的十分后悔55555</p>
+<h1 id="后记">后记</h1>
+<p>以前总是觉得勒索病毒啊这种东西离我很远，直到真正发现自己中病毒之后，这种侥幸才被瓦解。<br>
+现在随着技术的不断发展，门槛在不断降低，安全真的是一个非常严重的问题（亏我的方向还是安全呢555），所以数据备份啥的一定要做好！不然真的是欲哭无泪。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/hospital/">
+              <h3 class="post-title">
+                下一篇：走进医院，啥也不是
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

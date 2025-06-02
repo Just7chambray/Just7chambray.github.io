@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>在 Mac OS 中自定义自动切换的浅色/深色模式双壁纸 | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/%E8%87%AA%E5%AE%9A%E4%B9%89%20%E8%87%AA%E5%8A%A8%E5%8C%96.png')">
+            </div>
+          
+          <h2 class="post-title">在 Mac OS 中自定义自动切换的浅色/深色模式双壁纸</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-07-28</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/WDEFvVHzy/">
+                    Python
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Just7chambray.github.io/tag/vFqmDBjhB/">
+                    科技
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h1 id="引子">引子</h1>
+<p>千呼万唤始出来的深色模式终于在iOS13现身，现如今的iOS和iPadOS都可以根据日出日落时间自动切换浅色模式和深色模式，针对墙纸提供了深色外观下调暗墙纸。尽管在Mac上Apple也提供根据时间变换的动态桌面与深浅色桌面，但无法对用户自定义的墙纸进行“深色外观下的调暗”，所以就想着自己写个py脚本定时执行浅色/深色模式双壁纸的自动切换。</p>
+<h1 id="思路">思路</h1>
+<p>其实整体思路比较简单：<br>
+1. 获取当前时间<br>
+2. 判断现在是白天还是晚上<br>
+3. 根据时间用系统命令设置相应壁纸<br>
+4. 每隔一段时间执行（定时执行）</p>
+<h1 id="具体实现">具体实现</h1>
+<p>主要用到datetime库和os库，下面是具体代码：</p>
+<ol>
+<li>获取当前时间</li>
+</ol>
+<pre><code class="language-python">import datetime
+import os
+# 获取当前时间
+now_time = datetime.datetime.now()
+print(now_time)  # 2021-07-28 11:18:16.454789
+</code></pre>
+<ol start="2">
+<li>设定时间范围<br>
+我这里设定的时间范围是从早上六点半开始到下午六点半，在这期间内算是白天；更准确一些可以根据经纬度确定日出日落时间，这里为了方便就直接把时间定死了。</li>
+</ol>
+<pre><code class="language-python"># 设定时间范围
+d_time = datetime.datetime.strptime(str(datetime.datetime.now().date())+'6:30', '%Y-%m-%d%H:%M')
+n_time =  datetime.datetime.strptime(str(datetime.datetime.now().date())+'18:30', '%Y-%m-%d%H:%M')
+</code></pre>
+<ol start="3">
+<li>判断现在是白天还是晚上，根据时间用系统命令设置相应壁纸<br>
+因为判断执行是连在一起的，就把这两步合起来讲。<br>
+设置壁纸的命令是<code>osascript -e 'tell application &quot;Finder&quot; to set desktop picture to POSIX file &quot;/Users/wu/Pictures/mine/day.png&quot;'</code>（file后面跟上壁纸文件的绝对路径），再用<code>os.system()</code>执行即可。</li>
+</ol>
+<pre><code class="language-python"># 判断当前时间是否在范围时间内
+if now_time &gt; d_time and now_time&lt;n_time:
+    # print('day')
+    cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/day.png\&quot;\'&quot; #注意要用转义符号
+    os.system(cmd)
+if now_time &gt; d_time1 or now_time&lt;d_time:
+	# print('night')
+	cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/night.png\&quot;\'&quot;
+	os.system(cmd)
+</code></pre>
+<p>完整代码如下：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+import datetime
+import os
+# 获取当前时间
+now_time = datetime.datetime.now()
+print(now_time)
+# 设定时间范围
+d_time = datetime.datetime.strptime(str(datetime.datetime.now().date())+'6:30', '%Y-%m-%d%H:%M')
+n_time =  datetime.datetime.strptime(str(datetime.datetime.now().date())+'18:30', '%Y-%m-%d%H:%M')
+# 判断当前时间是否在范围时间内
+if now_time &gt; d_time and now_time&lt;n_time:
+    # print('day')
+    cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/day.png\&quot;\'&quot; 
+    os.system(cmd)
+if now_time &gt; d_time1 or now_time&lt;d_time:
+	# print('night')
+	cmd = &quot;osascript -e \'tell application \&quot;Finder\&quot; to set desktop picture to POSIX file \&quot;/Users/wu/Pictures/mine/night.png\&quot;\'&quot;
+	os.system(cmd)
+# print('done')
+</code></pre>
+<h1 id="测试">测试</h1>
+<p>打开terminal，进入到py文件所在文件夹，运行python3 wallpaper.py 或者./wallpaper.py<br>
+如下图成功运行<br>
+<img src="https://Just7chambray.github.io/post-images/1627460074151.jpg" alt="" loading="lazy"></p>
+<h1 id="创建定时任务">创建定时任务</h1>
+<p>既然代码可以成功运行，便用<code>crontab -e</code>来创建定时任务。</p>
+<p>打开terminal，输入<code>crontab -e</code>，进入到vim界面，在英文输入法下按下'a'键便可以编辑，输入<code>* *\2 * * * python3 /Users/wu/Desktop/wallpaper.py</code>，我这里是每隔两个小时自动执行，如果是每隔一分钟是<code>*/1 * * * *</code>这样设定。输入完成后按下<code>:</code>和'wq'，保存并退出。<br>
+这时会有如下图所示的弹窗，点击“好”即可。<br>
+<img src="https://Just7chambray.github.io/post-images/1627461462056.jpg" alt="" loading="lazy"><br>
+定时任务就设定完成了。</p>
+<h1 id="查看定时任务">查看定时任务</h1>
+<p>在terminal中输入<code>crontab -l</code>来查看定时任务。<br>
+<img src="https://Just7chambray.github.io/post-images/1627461607775.jpeg" alt="" loading="lazy"></p>
+<h1 id="but-crontab-不执行">BUT! crontab 不执行！</h1>
+<p>一天了，他都没什么反应，所以我又特地去谷歌了一下，发现好像是系统是 OSX 10.15 Catalina 以上的，对 cron 的权限进行了限制，因此需要在「系统偏好设置」里将 cron 添加到「完全磁盘访问权限」。<br>
+步骤：<br>
+系统偏好设置 -&gt; 安全性与隐私 -&gt; 选择 隐私 -&gt; 左侧菜单找到完全磁盘访问权限 -&gt; 在右侧查看是否有 cron 这个应用（没有的话就添加进去，然后勾选）</p>
+<p>cron 程序所在目录:</p>
+<ol>
+<li>终端输入 <code>whereis cron</code>，会显示<code>/usr/sbin/cron</code></li>
+<li>再输入 <code>open /usr/sbin</code></li>
+<li>在打开的文件夹内找到 cron</li>
+<li>把这个文件直接拖动到 系统偏好设置 右侧应用列表框内</li>
+</ol>
+<p><strong>在Mac上也可以自动切换的浅深色壁纸啦！👻</strong></p>
+<hr>
+<p>参考：</p>
+<ol>
+<li>https://www.jianshu.com/p/d22f78fe6530</li>
+<li>https://sspai.com/post/64255</li>
+<li>https://blog.csdn.net/xjh093/article/details/108517904</li>
+</ol>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/breakfast_in_summer/">
+              <h3 class="post-title">
+                下一篇：唤醒半独居青年
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

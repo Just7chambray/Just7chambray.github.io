@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>New to LaTex based on Overleaf | 吴糖可乐</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Just7chambray.github.io/favicon.ico?v=1748852079537">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Just7chambray.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Just7chambray.github.io">
+        <img class="avatar" src="https://Just7chambray.github.io/images/avatar.png?v=1748852079537" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Just7chambray.github.io">
+        <h1 class="site-title">吴糖可乐</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Just7chambray.github.io/post/gallery" class="menu purple-link">
+            图廊
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://wuxinyi.notion.site/Python-e4c8a37db48b4565b2a35b5db5216819" class="menu" target="_blank">
+            Python
+          </a>
+        
+      
+        
+          <a href="http://Just7chambray.github.io/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/New%20to%20LaTex%20based%20on%20Overleaf.png')">
+            </div>
+          
+          <h2 class="post-title">New to LaTex based on Overleaf</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-04-14</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Just7chambray.github.io/tag/T5W4xHLVa/">
+                    Latex
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Just7chambray.github.io/tag/TILESCRKuS/">
+                    效率
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h1 id="writing-your-first-piece-of-latex">Writing your first piece of LATEX</h1>
+<pre><code class="language-latex">\documentclass{article}
+
+\begin{document}
+First document. This is a simple example, with no extra parameters or packages included.
+\end{document}
+</code></pre>
+<h1 id="the-preamble-of-a-document">The preamble of a document</h1>
+<p>preamble means NOT the main body of the document.</p>
+<h2 id="declare-the-type-of-document">Declare the type of document</h2>
+<p><strong><code>\documentclass[font_size, paper_size]{the type of document}</code></strong></p>
+<ul>
+<li>font_size: default 10pt</li>
+<li>paper_size: a4paper, legalpaper...</li>
+<li>the type of document: article, report...<br>
+Here is the example.</li>
+</ul>
+<pre><code class="language-latex">\documentclass[12pt, a4paper]{article}
+</code></pre>
+<p>more info：<a href="https://www.overleaf.com/learn/Page_size_and_margins">https://www.overleaf.com/learn/Page_size_and_margins</a></p>
+<h2 id="declare-the-encoding">Declare the encoding</h2>
+<p><strong><code>\usepackage[utf8]{inputenc}</code></strong> Here  to recommend utf-8.</p>
+<h1 id="adding-a-title-author-and-date">Adding a title, author and date</h1>
+<p>Add three lines to the preamble</p>
+<h2 id="title">Title</h2>
+<p><strong><code>\title{Title_name}</code></strong></p>
+<h2 id="author">Author</h2>
+<p><strong><code>\author{Author_name}</code></strong> or <strong><code>\author{Author_name \thanks{funded by ...}}</code></strong></p>
+<p>It will add a superscript and a footnote with the text inside the braces. Useful if you need to thank an institution in your article.</p>
+<h2 id="date">Date</h2>
+<p><strong><code>\date{Month Day Year}</code>  or <code>\date{Month Year}</code>  or<code>\today</code></strong></p>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[utf8]{inputenc}
+ 
+\title{First document}
+\author{Hubert Farnsworth \thanks{funded by the ShareLaTeX team}}
+\date{\today}
+
+\begin{document}
+ 
+\maketitle
+ 
+We have now added a title, author and date to our first \LaTeX{} document!
+ 
+\end{document}
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%200.png" alt="" loading="lazy"></figure>
+<h1 id="adding-comments">Adding comments</h1>
+<p>Comments are pieces of text you can include in the document which will not be printed, and will not affect the document in any way.</p>
+<ul>
+<li>
+<p>One-line comments</p>
+<p>add**<code>%</code>** symbol at the beginning of the line</p>
+</li>
+</ul>
+<pre><code class="language-latex">\begin{document}
+
+\maketitle
+
+We have now added a title, author and date to our first \LaTeX{} document!
+
+% This line here is a comment. It will not be printed in the document.
+
+\end{document}
+</code></pre>
+<ul>
+<li>Multi-line comments</li>
+</ul>
+<pre><code class="language-latex">% first method
+\iffalse
+    This line here is a comment. It will not be printed in the document.
+\fi
+
+% second method
+% need to use a package
+\usepackage{verbatim}
+
+\begin{comment} 
+here
+are
+comments
+\end{comment}
+</code></pre>
+<h1 id="bold-italics-and-underlining">Bold, italics and underlining</h1>
+<ul>
+<li><strong>Bold</strong>:  <strong><code>\textbf{...}</code></strong></li>
+<li>Italics:  <strong><code>\textit{...}</code></strong></li>
+<li>Underline:  <strong><code>\underline{...}</code></strong></li>
+</ul>
+<pre><code class="language-latex">% Example
+Some of the \textbf{greatest}
+discoveries in \underline{science} 
+were made by \textbf{\textit{accident}}.
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%201.png" alt="" loading="lazy"></figure>
+<ul>
+<li>handling depends on the context:<strong><code>\emph{...}</code></strong></li>
+</ul>
+<pre><code class="language-latex">Some of the greatest \emph{discoveries} 
+in science 
+were made by accident.
+
+\textit{Some of the greatest \emph{discoveries} 
+in science 
+were made by accident.}
+
+\textbf{Some of the greatest \emph{discoveries} 
+in science 
+were made by accident.}
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%202.png" alt="" loading="lazy"></figure>
+<h1 id="adding-images">Adding images</h1>
+<p>Need to use a 「graphicx」 package <strong><code>\usepackage{graphicx}</code></strong> and Write in preamble.</p>
+<p>Here are 2 methods to add images</p>
+<ul>
+<li><strong><code>\graphicspath{ {images/} }</code></strong> , it needs to <a href="https://www.overleaf.com/learn/how-to/Including_images_on_Overleaf">upload the images</a>, and the images are kept in a folder named images under the current directory.</li>
+<li><strong><code>\includegraphics{image_name}</code></strong> , the image is actually included  in the document. The file name of the image should not contain white spaces nor multiple dots.</li>
+</ul>
+<p>For more details see the section about <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Generating_high-res_and_low-res_images">generating high resolution and low resolution images.</a></p>
+<h1 id="captions-labels-and-references">Captions, labels and references</h1>
+<p>There are three important commands :</p>
+<ul>
+<li><strong><code>\caption{a nice plot}</code></strong>: set the caption for the figure and place it above or below the figure.</li>
+<li><strong><code>\label{fig:mesh1}</code></strong>: refer the image within your document, set a label with this command. The label will number the image, and combined with the next command will allow you to reference it.</li>
+<li><strong><code>\ref{fig:mesh1}</code></strong>: substituted by the number corresponding to the referenced figure.</li>
+</ul>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+ 
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{mesh.png}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+ 
+As you can see in the figure \ref{fig:mesh1}, the 
+function grows near 0. Also, in the page \pageref{fig:mesh1} 
+is the same example.
+
+\end{document}
+</code></pre>
+<p><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%203.png" alt="" loading="lazy"><br>
+<img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%204.png" alt="" loading="lazy"></p>
+<blockquote>
+<p>Note: If you are using captions and references on your own computer, you will have to compile the document twice for the references to work. Overleaf will do this for you automatically.</p>
+</blockquote>
+<h1 id="creating-lists-in-latex">Creating lists in LATEX</h1>
+<p>Lists are very simple to create in LATEX. You can create lists using different list environments. Environments are sections of our document that you want to present in a different way to the rest of the document. They start with a <strong><code>\begin{...}</code></strong> command and end with an <strong><code>\end{...}</code></strong> command.</p>
+<h2 id="unordered-lists">Unordered lists</h2>
+<p>Environment: <strong>itemize</strong></p>
+<p>Each entry must be preceded by the control sequence  <strong><code>\item</code></strong> .</p>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\begin{itemize}
+\item One entry in the list
+\item Another entry in the list
+\end{itemize}
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%205.png" alt="" loading="lazy"></figure>
+<h2 id="ordered-lists">Ordered lists</h2>
+<p>Environment: <strong>enumerate</strong></p>
+<p>Have the same syntax inside a different environment.</p>
+<pre><code class="language-latex">\begin{enumerate}
+\item The labels consists of sequential numbers.
+\item The numbers starts at 1 with every call to the enumerate environment.
+\end{enumerate}
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%206.png" alt="" loading="lazy"></figure>
+<h1 id="adding-math-to-latex">Adding math to LATEX</h1>
+<p>2 writing modes for mathematical expressions:</p>
+<ol>
+<li>the <strong>inline</strong> mode
+<ol>
+<li><strong><code>\( ... \)</code></strong></li>
+<li><strong><code>$ ... $</code></strong></li>
+<li><strong><code>\begin{math} ... \end{math}</code></strong></li>
+</ol>
+</li>
+<li>the <strong>display</strong> mode (numbered &amp; unnumbered version)
+<ol>
+<li><strong><code>\[ ... \]</code> →</strong>unnumbered</li>
+<li><strong><code>\begin{displaymath} ... \end{displaymath}</code></strong>  →unnumbered</li>
+<li><strong><code>\begin{equation} ... \end{equation}</code> →</strong>numbered</li>
+<li><code>$$ ... $$</code>  (NOT encouraged)</li>
+</ol>
+</li>
+</ol>
+<h1 id="basic-formatting">Basic Formatting</h1>
+<h2 id="abstracts">Abstracts</h2>
+<p>The <strong>abstract environment</strong> will put the text in a special format at the top of your document.</p>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\begin{abstract}
+This is a simple paragraph at the beginning of the document. A brief introduction about the main subject.
+\end{abstract}
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%207.png" alt="" loading="lazy"></figure>
+<h2 id="paragraphs-and-newlines">Paragraphs and newlines</h2>
+<ul>
+<li>Start a new paragraph
+<ul>
+<li>hit the &quot;Enter&quot; key twice (to insert a double blank line).</li>
+<li>LATEX can automatically indents paragraphs.</li>
+</ul>
+</li>
+<li>Start a new line
+<ul>
+<li><strong><code>\\</code></strong></li>
+<li><strong><code>\newline</code></strong></li>
+<li>Don't use multiple <strong><code>\\</code></strong> or  <strong><code>\newline</code></strong> to simulate with larger spacing between paragraphs</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapters-and-sections">Chapters and Sections</h2>
+<p>start with  <strong><code>\chapter{chapter_name}</code></strong></p>
+<p>start with  <strong><code>\section{section_name}</code></strong>  (section numbering is automatic)</p>
+<p>use <strong><code>\section*{section_name}</code></strong> to disable automatically numbering</p>
+<p>The basic levels of depth are listed below:</p>
+<ul>
+<li>-1｜**<code>\part{part}</code> →**available in report and book document classes</li>
+<li>0｜**<code>\chapter{chapter}</code> →**available in report and book document classes</li>
+<li>1｜**<code>\section{section}</code>**</li>
+<li>2｜**<code>\subsection{subsection}</code>**</li>
+<li>3｜**<code>\subsubsection{subsubsection}</code>**</li>
+<li>4｜**<code>\paragraph{paragraph}</code>**</li>
+<li>5｜**<code>\subparagraph{subparagraph}</code>**</li>
+</ul>
+<h1 id="creating-tables">Creating tables</h1>
+<h2 id="creating-a-simple-table-in-latex">Creating a simple table in LATEX</h2>
+<ul>
+<li>Environment: tabular</li>
+<li>Specify a parameter to env to declare the number of columns**<code>{c c c }</code>**</li>
+<li>Align
+<ul>
+<li><strong><code>r</code></strong> → right alignment</li>
+<li><strong><code>l</code></strong> → left alignment</li>
+<li>default center alignment</li>
+</ul>
+</li>
+<li>Symbol
+<ul>
+<li><strong><code>&amp;</code></strong> → specify the breaks in the table entries</li>
+<li><strong><code>\\</code></strong> → go to the next line of your table</li>
+</ul>
+</li>
+</ul>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\begin{tabular}{ c c c }
+  cell1 &amp; cell2 &amp; cell3 \\ 
+  cell4 &amp; cell5 &amp; cell6 \\  
+  cell7 &amp; cell8 &amp; cell9    
+\end{tabular}
+</code></pre>
+<p><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%208.png" alt="" loading="lazy"><br>
+ps: not in the center of the page but left</p>
+<h2 id="adding-borders">Adding borders</h2>
+<ul>
+<li><strong><code>|</code></strong>: insert  ****a vertical line <strong><code>{ |c|c|c| }</code></strong></li>
+<li><strong><code>\hline</code></strong>: insert a horizontal line.</li>
+</ul>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\begin{tabular}{ | c | c | c | } 
+  \hline
+  cell1 &amp; cell2 &amp; cell3 \\ 
+  cell4 &amp; cell5 &amp; cell6 \\ 
+  cell7 &amp; cell8 &amp; cell9 \\ 
+  \hline
+\end{tabular}
+</code></pre>
+<figure data-type="image" tabindex="7"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%209.png" alt="" loading="lazy"></figure>
+<h2 id="captions-labels-and-references-2">Captions, labels and references</h2>
+<ul>
+<li>the same way as images</li>
+<li>Environment: table</li>
+</ul>
+<p>Here is the example.</p>
+<pre><code class="language-latex">%Referencing and captioning tables
+The table \ref{table:1} is an example of referenced \LaTeX{} elements.
+
+\begin{table}[h!]
+\centering
+ \begin{tabular}{||c c c c||} 
+ \hline
+ Col1 &amp; Col2 &amp; Col2 &amp; Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 &amp; 6 &amp; 87837 &amp; 787 \\ 
+ 2 &amp; 7 &amp; 78 &amp; 5415 \\
+ 3 &amp; 545 &amp; 778 &amp; 7507 \\
+ 4 &amp; 545 &amp; 18744 &amp; 7560 \\
+ 5 &amp; 88 &amp; 788 &amp; 6344 \\ [1ex] 
+ \hline
+ \end{tabular}
+ \caption{Table to test captions and labels}
+ \label{table:1}
+\end{table}
+</code></pre>
+<figure data-type="image" tabindex="8"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%2010.png" alt="" loading="lazy"></figure>
+<h1 id="adding-a-table-of-contents">Adding a Table of Contents</h1>
+<p><code>**\tabelofcontents**</code></p>
+<p>Here is the example.</p>
+<pre><code class="language-latex">\documentclass{article}
+\usepackage[utf8]{inputenc}
+ 
+\title{Sections and Chapters}
+\author{Gubert Farnsworth}
+\date{ }
+ 
+\begin{document}
+ 
+\maketitle
+ 
+\tableofcontents
+ 
+\section{Introduction}
+ 
+This is the first section.
+ 
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing  
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et 
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante. 
+Donec ullamcorper, felis non sodales...
+ 
+\section*{Unnumbered Section}
+\addcontentsline{toc}{section}{Unnumbered Section}
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+ 
+\section{Second Section}
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+ 
+\end{document}
+</code></pre>
+<figure data-type="image" tabindex="9"><img src="https://jc-gridea.oss-cn-shanghai.aliyuncs.com/images/latex/Untitled%2011.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Basic_Formatting">References</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Just7chambray.github.io/post/capture_in_minnan/">
+              <h3 class="post-title">
+                下一篇：捕捉闽南
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan"></div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Just7chambray.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
